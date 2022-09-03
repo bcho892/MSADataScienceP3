@@ -18,6 +18,6 @@ def predictForImage(filename):
 	# load model
 	model = load_model('final_model.h5')
 	result = model.predict(img)
-	print("It is probably", categories[np.argmax(result, axis=-1)[0]], "with a", result[0][1], "chance of being", result[0][1])
+	print("It is probably", categories[np.argmax(result, axis=-1)[0]], "with a", result[0][1], "chance of being", categories[1])
 	print(result)
 
