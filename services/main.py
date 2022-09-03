@@ -2,6 +2,7 @@ import io
 import requests
 import flask
 import numpy as np
+from flask_cors import CORS
 from PIL import Image
 from categories import categories
 from tensorflow import keras
@@ -11,14 +12,15 @@ from tensorflow.keras.models import load_model
 def load_model():
     model = keras.models.load_model("final_model.h5")
     return model
-    
+
 app = flask.Flask(__name__)
+CORS(app)
 model = load_model()
 
 @app.route('/get_image')
 def get_image_bytesio(): #https://stackoverflow.com/questions/68007907/return-an-image-taken-from-an-url-without-storing-the-image-file
     try:
-        data = {"success" : False}
+        data = {}
         r = requests.get(flask.request.args.get("imageUrl"))
         file = io.BytesIO()
         file.write(r.content)
@@ -35,7 +37,7 @@ def get_image_bytesio(): #https://stackoverflow.com/questions/68007907/return-an
         return flask.jsonify(data)
     except Exception as e:
         print(e)
-        flask.abort(400)
+        return flask.jsonify({"success" :False})
 
 def loadImage(image):
     if image.mode != "RGB":
