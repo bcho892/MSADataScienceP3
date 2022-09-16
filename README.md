@@ -1,22 +1,20 @@
-# Required Software:
-* [Python 3.9+](https://www.python.org/downloads/)
-* Text Editor for Python ([Visual Studio Code](https://code.visualstudio.com/) with [Python extension](https://marketplace.visualstudio.com/items?itemName=ms-python.python) installed is recommended)
+# MSA Data Science P3
 
-Recommended:
-* [Anaconda](https://www.anaconda.com/)
-* [Virtualenv](https://virtualenv.pypa.io/en/latest/installation.html)
+Welcome to my part 3 repo! 
 
-# Setting Up:
-Install the libraries listed in the `requirements.txt` via the command:
-```bash
-pip install -r requirements.txt
-```
+Some things to note: 
+* I've included the CIFAR-10 dataset in the repo
+* My model is named final-model.h5
+  * The services folder contains a copy of it which is what I use to make an API with the model
+* Everything related to the basic process is in the 'make-model' notebook
+* My 'report' notebook contains the main summary of my project.
 
-Recommended to use a virtual environment either from either [virtualenv](https://docs.python.org/3/library/venv.html) or [anaconda](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html). This setup helps isolate project dependencies from user dependencies as to avoid version conflicts.
+### Summary of performance
+* 0.956 Accuracy
+* Local minimum loss found at ~4 epochs
 
-# Tensorboard:
-Tensorboard is an added feature to the skeleton project. Run 
-```
-tensorboard --logdir output/logs/
-``` 
-to run [tensorboard](https://github.com/tensorflow/tensorboard/blob/master/README.md). The main points of interests are accuracy and loss graphs. The tensorboard application can then be opened via the site `http://localhost:6006/`.
+### Advanced Features attempted
+* Hyperparameter Tuning (Specifically for the dropout and optimizer)
+* Predict for given image function (done using inbuilt tensorflow libraries)
+* Integration into front-end [(can be viewed here)](https://github.com/bcho892/MSAFrontEnd)
+
